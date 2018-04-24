@@ -5,16 +5,20 @@ export default {
     overflow: 'auto',
     margin: 0
   },
+
   'hljs-keyword': {
-    color: '#de6339'
+    color: '#DE6339'
   },
+
   'hljs-string': {
-    color: '#e2a413'
+    color: '#E2A413'
   },
+
   'hljs-built_in': {
     color: '#49B882'
   },
+
   'hljs-literal': {
-    color: '#6c71c4'
+    color: '#6C71C4'
   }
 }
