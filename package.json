@@ -6,6 +6,9 @@
     "url": "https://github.com/segmentio/daydream"
   },
   "description": "A chrome extension to record your actions into a nightmare script.",
+  "scripts": {
+    "build": "webpack"
+  },
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",

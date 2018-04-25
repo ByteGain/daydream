@@ -45,7 +45,7 @@ const base = {
 
 const development = {
   ...base,
-  devtool: '#eval-module-source-map',
+  // devtool: '#eval-module-source-map',
   module: {
     ...base.module,
     rules: [
@@ -68,7 +68,7 @@ const development = {
   },
   plugins: [
     ...base.plugins,
-    new webpack.HotModuleReplacementPlugin()
+    // new webpack.HotModuleReplacementPlugin()
   ]
 }
 

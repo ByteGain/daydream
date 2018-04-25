@@ -30,6 +30,10 @@ class Recorder {
   }
 
   start() {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+      const activeTab = tabs[0];
+      this.handleMessage({ action: 'goto', url: activeTab.url })
+    });
     chrome.tabs.onUpdated.addListener(this.handleRouteUpdate.bind(this));
     chrome.runtime.onMessage.addListener(this.handleMessage.bind(this));
   }
@@ -48,7 +52,7 @@ class Recorder {
   }
 
   handleMessage(message) {
-    // console.log('%c message', 'color: #b0b', message);
+    console.log('%c message', 'color: #b0b', message);
     if (message.action === 'url') {
       this.lastUrl = message.value;
     } else {
@@ -58,7 +62,7 @@ class Recorder {
 }
 
 
-// console.log('%c daydream', 'color: #b0b');
+console.log('%c daydream', 'color: #b0b');
 
 const daydream = new Daydream();
 daydream.boot();

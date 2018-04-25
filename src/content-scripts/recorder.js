@@ -1,5 +1,6 @@
 import Selector from 'css-selector-generator'
 import observeDOM from './observe-dom.js'
+import { debounce } from './debounce.js'
 
 const selector = new Selector();
 
@@ -9,11 +10,11 @@ class EventRecorder {
     const clickableElements = document.querySelectorAll('a, button');
 
     for (let i = 0; i < typeableElements.length; i++) {
-      typeableElements[i].addEventListener('keydown', this.handleKeydown);
+      typeableElements[i].addEventListener('keydown', debounce(EventRecorder.sendMessage, 500));
     }
 
     for (let i = 0; i < clickableElements.length; i++) {
-      clickableElements[i].addEventListener('click', this.handleClick);
+      clickableElements[i].addEventListener('click', EventRecorder.handleClick);
     }
   }
 
@@ -22,20 +23,15 @@ class EventRecorder {
     const clickableElements = document.querySelectorAll('a, button');
 
     for (let i = 0; i < typeableElements.length; i++) {
-      typeableElements[i].removeEventListener('keydown', this.handleKeydown);
+      typeableElements[i].removeEventListener('keydown', debounce(EventRecorder.handleKeydown, 500));
     }
 
     for (let i = 0; i < clickableElements.length; i++) {
-      clickableElements[i].removeEventListener('click', this.handleClick);
+      clickableElements[i].removeEventListener('click', EventRecorder.handleClick);
     }
   }
 
-  handleKeydown(e) {
-    console.log('%c record key', 'color: #b0b');
-    EventRecorder.sendMessage(e);
-  }
-
-  handleClick(e) {
+  static handleClick(e) {
     console.log('%c record click', 'color: #b0b');
     if (e.target.href) {
       chrome.runtime.sendMessage({
@@ -55,12 +51,14 @@ class EventRecorder {
   }
 }
 
+
 console.log('%c recorder', 'color: #b0b');
+
 const eventRecorder = new EventRecorder();
 eventRecorder.addEventHandlers();
 
-observeDOM(document.querySelector('body') ,function(){ 
+debounce(observeDOM(document.querySelector('body') , () => {
   console.log('%c dom updated', 'color: #b0b');
   eventRecorder.removeEventHandlers();
   eventRecorder.addEventHandlers();
-});
+}), 250);
