@@ -6,11 +6,18 @@
     "128": "images/icon128.png"
   },
   "description": "A chrome extension to record your actions into a nightmare script.",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
     "storage",
     "webNavigation",
     "tabs",
     "*://*/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": [ "recorder.js" ]
+    }
   ],
   "browser_action": {
     "default_icon": "images/icon-black.png",

@@ -9,8 +9,7 @@ const { NODE_ENV = 'development' } = process.env
 const base = {
   context: __dirname,
   entry: {
-    background: './src/background/index.js',
-    'content-script': './src/content-scripts/index.js',
+    recorder: './src/content-scripts/recorder.js',
     popup: './src/popup/index.js'
   },
   output: {
@@ -29,6 +28,7 @@ const base = {
   plugins: [
     new CopyPlugin([
       { from: './src/manifest.json', to: './manifest.json' },
+      { from: './src/background/background.js', to: './background.js' },
       { from: './src/images', to: 'images' }
     ]),
     new HtmlWebpackPlugin({

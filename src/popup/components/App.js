@@ -7,7 +7,7 @@ import styles from './App.css'
 
 registerLanguage('javascript', js)
 
-const tabs = ['Nightmare', 'Puppeteer']
+const tabs = ['Puppeteer', 'Nightmare']
 
 const App = ({ onSelectTab, selectedTab, onRestart, recording }) => {
   let script = ''

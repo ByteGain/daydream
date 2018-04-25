@@ -6,7 +6,7 @@ export default class AppContainer extends Component {
     super(props)
 
     this.state = {
-      selectedTab: 'Nightmare',
+      selectedTab: 'Puppeteer',
       recording: []
     }
 
