@@ -32,7 +32,7 @@ Just click the black daydream icon (it should turn green to indicate that it is 
 
 Daydream currently supports `.goto()`, `.click()`, `.type()`, `.screenshot()`, and `.refresh()`.
 
-If you want daydream to capture typing, press <kbd>tab</kbd> after you finish typing in each `input` element.
+If you want daydream to capture typing, pause for half a second after typing in an input box.
 
 ## License
 

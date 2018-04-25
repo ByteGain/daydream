@@ -1,11 +1,11 @@
 {
   "name": "daydream",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/segmentio/daydream"
+    "url": "https://github.com/ByteGain/daydream"
   },
-  "description": "A chrome extension to record your actions into a nightmare script.",
+  "description": "A chrome extension to record your actions into a Puppeteer script.",
   "scripts": {
     "build": "webpack"
   },
